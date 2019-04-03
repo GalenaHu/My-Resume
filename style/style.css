@@ -1,0 +1,469 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+html {
+    font-family: Arial, 'Microsoft YaHei', 微软雅黑;
+    font-size: 16px;
+
+    background-color: #efefef;
+}
+
+a {
+    text-decoration: none;
+
+    color: inherit;
+}
+
+.clearfix::after {
+    display: block;
+    clear: both;
+
+    content: '';
+}
+
+nav {
+    position: fixed;
+
+    width: 100%;
+}
+
+.nav-container {
+    min-width: 960px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.resume-logo {
+    font-size: 2rem;
+    font-weight: bold;
+
+    float: left;
+
+    margin: 20px;
+
+    color: #f2746c;
+}
+
+.top-nav-bar {
+    font-size: 1.15rem;
+
+    float: right;
+
+    margin: 20px;
+
+    color: #cbcdcf;
+}
+
+.nav-li {
+    position: relative;
+
+    float: left;
+
+    margin: 1px;
+    padding: 9px;
+
+    cursor: pointer;
+}
+
+.nav-li:hover::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    content: '';
+    animation: widthChange .2s;
+
+    background: #f2746c;
+}
+
+@keyframes widthChange {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.background-img {
+    width: 100%;
+    height: 520px;
+
+    background-image: url('../img/backimg.jpg');
+    background-position: center center;
+    background-size: cover;
+}
+
+.mask {
+    width: 100%;
+    height: 520px;
+
+    background-color: rgba(0, 0, 0, .8);
+}
+
+.resume-card {
+    margin-top: -350px;
+    margin-bottom: 50px;
+}
+
+.card-container {
+    width: 960px;
+    margin: 0 auto;
+    padding: 25px;
+
+    background-color: white;
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, .2);
+}
+
+.photo {
+    float: left;
+
+    height: 350px;
+    margin: 25px;
+}
+
+.text-message {
+    float: left;
+
+    width: 510px;
+    margin: 25px;
+}
+
+.hello {
+    font-size: 1.4rem;
+    font-weight: bold;
+
+    position: relative;
+
+    display: inline-block;
+
+    padding: 10px;
+
+    color: white;
+    background-color: #f2746c;
+}
+
+.hello::after {
+    position: absolute;
+    top: 100%;
+    left: 10px;
+
+    width: 0;
+    height: 0;
+
+    content: '';
+
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #f2746c;
+}
+
+.name {
+    font-size: 4rem;
+    font-weight: bold;
+
+    margin: 16px 0;
+
+    color: #3d4451;
+}
+
+.text-message>dl {
+    font-size: 1.2rem;
+
+    margin-top: 15px;
+
+    text-align: left;
+}
+
+.text-message>dl>dt {
+    font-weight: bold;
+
+    float: left;
+
+    width: 30%;
+    height: 34px;
+    padding: 4px 0;
+}
+
+.text-message>dl>dd {
+    float: right;
+
+    width: 70%;
+    height: 34px;
+    padding: 4px 0;
+
+    color: #3d4451;
+}
+
+.download {
+    min-width: 960px;
+
+    text-align: center;
+}
+
+.download>div {
+    font-size: 1.2rem;
+
+    display: inline-block;
+
+    padding: 10px 50px;
+
+    cursor: pointer;
+
+    color: #3d4451;
+    border: 1px solid #cbcdcf;
+}
+
+.download>div:hover {
+    transition: box-shadow .2s;
+
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+}
+
+section {
+    margin: 80px 0;
+}
+
+section>h2 {
+    font-size: 2.5rem;
+
+    min-width: 960px;
+    margin: 20px 0;
+
+    text-align: center;
+
+    color: #3d4451;
+}
+
+.skills-container {
+    display: flex;
+
+    width: 960px;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    padding: 30px;
+
+    background-color: white;
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, .2);
+
+    flex-wrap: wrap;
+}
+
+.skill-box {
+    width: 45%;
+    margin: 20px;
+}
+
+.skill-bar {
+    height: 7px;
+    margin-top: 3px;
+
+    content: '';
+
+    background-color: rgba(242, 116, 108, .25);
+}
+
+.skill-bar-active {
+    height: 7px;
+
+    content: '';
+
+    background-color: #f2746c;
+}
+
+
+.projects-container {
+    overflow: hidden;
+
+    width: 960px;
+    margin: 0 auto;
+
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, .2);
+}
+
+.projects-wrapper {
+    display: flex;
+
+    flex-wrap: nowrap;
+}
+
+.project {
+    font-size: 0;
+
+    position: relative;
+    /* 图片下有1像素空隙 */
+}
+
+.project>.mask {
+    position: absolute;
+
+    height: 540px;
+
+    background-color: rgba(0, 0, 0, .3);
+}
+
+.project>.project-message {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+
+    margin: 30px;
+
+    border: 1px solid red;
+}
+
+.project>.project-message>.project-name {
+    font-size: 2rem;
+
+    color: white;
+}
+
+.messages {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.messages-container {
+    width: 672px;
+    margin: 0 auto;
+
+    background-color: white;
+    ;
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, .2);
+}
+
+.form {
+    position: relative;
+
+    padding: 50px;
+}
+
+.form>.name-input,
+.form>.message-input {
+    font-family: Arial, 'Microsoft YaHei', 微软雅黑;
+    font-size: 1.5rem;
+
+    display: block;
+
+    width: 100%;
+    margin-top: 20px;
+
+    resize: none;
+
+    border: none;
+    border-bottom: 1px solid #cbcdcf;
+}
+
+.form>.name-input:focus,
+.form>.message-input:focus {
+    color: black;
+    border-bottom-color: white;
+    outline: none;
+}
+
+.input-error {
+    outline: red solid 1px;
+}
+
+.focus-border {
+    position: absolute;
+
+
+    width: 572px;
+    height: 3px;
+
+    content: '';
+    animation: widthChange2 .2s;
+
+    outline: none;
+    background-color: #f2746c;
+}
+
+@keyframes widthChange2 {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 572px;
+    }
+}
+
+.comment {
+    font-size: 0.8rem;
+    color: #cbcdcf;
+    margin-top: 1px;
+}
+
+.submit {
+    font-size: 1rem;
+    font-weight: bold;
+
+    display: block;
+
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 10px 50px;
+
+    cursor: pointer;
+
+    color: white;
+    border: none;
+    background: #f2746c;
+}
+
+.messages-show {
+    border-top: 1px solid #cbcdcf;
+}
+
+.message-bar {
+    display: flex;
+
+    padding: 20px;
+    width: 90%;
+    margin: 0 auto;
+    border-bottom: 1px solid #cbcdcf;
+    font-size: 1.2rem;
+}
+
+.message-bar-hidden {
+    display: none;
+}
+
+.message-name {
+    width: 20%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.message-text {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    padding-top: 3px;
+}
+
+.message-info {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 1rem;
+}
+
+.message-info>div {
+    text-align: center;
+}
