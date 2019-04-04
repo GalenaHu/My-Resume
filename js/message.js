@@ -10,45 +10,20 @@
             });
 
         },
-        save: function() {
-            let nameTag = document.querySelector('#nameInput');
-            let messageTag = document.querySelector('#messageInput');
+        save: function(name, message, time) {
             var MessageDb = AV.Object.extend('MessageDb');
             var messageDb = new MessageDb();
-            let NameValue = nameTag.value;
-            let MessageValue = messageTag.value;
-            let myDate = new Date();
-            let TimeValue = myDate.toLocaleDateString() + '<br>' + myDate.getHours() + ':' + myDate.getMinutes();
-            messageDb.save({
-                nameText: NameValue,
-                messageText: MessageValue,
-                timeText: TimeValue,
-            }).then(function(object) {
-                console.log('success');
-                var newBar = controller.NewMessageBar(NameValue, MessageValue, 'new', TimeValue);
-                messagesShow.prepend(newBar);
-                nameTag.value = '';
-                messageTag.value = '';
-                inputBlur.call(nameTag);
-                inputBlur.call(messageTag);
-            }, function() {
-                alert('Oh, something got wrong...');
-            });
+            return messageDb.save({
+                nameText: name,
+                messageText: message,
+                timeText: time,
+            })
         },
         fetch: function() {
             var query = new AV.Query('MessageDb');
-            query.limit(5);
+            query.limit(10);
             query.descending('createdAt');
-            query.find().then(function(MessageDbs) {
-                for (let i = 0; i < 5; i++) {
-                    var name = MessageDbs[i].attributes.nameText;
-                    var message = MessageDbs[i].attributes.messageText;
-                    var serial = MessageDbs[i].attributes.number;
-                    var time = MessageDbs[i].attributes.timeText
-                    var newBar = controller.NewMessageBar(name, message, serial, time);
-                    messagesShow.append(newBar);
-                };
-            });
+            return query.find()
         }
 
     };
@@ -57,8 +32,8 @@
         init: function() {
             controller.view = view;
             model.init();
-            model.fetch();
             controller.bindEvents();
+            controller.loadMessageBar();
         },
         bindEvents: function() {
             let formTag = document.querySelector('#form');
@@ -77,7 +52,21 @@
                     messageTag.classList.add('input-error');
                 };
                 if (formTest) {
-                    model.save();
+                    let NameValue = nameTag.value;
+                    let MessageValue = messageTag.value;
+                    let myDate = new Date();
+                    let TimeValue = myDate.toLocaleDateString() + '<br>' + myDate.getHours() + ':' + myDate.getMinutes();
+                    model.save(NameValue, MessageValue, TimeValue).then(function(object) {
+                        console.log('success');
+                        var newBar = controller.NewMessageBar(NameValue, MessageValue, 'new', TimeValue);
+                        messagesShow.prepend(newBar);
+                        nameTag.value = '';
+                        messageTag.value = '';
+                        inputBlur.call(nameTag);
+                        inputBlur.call(messageTag);
+                    }, function() {
+                        alert('Oh, something got wrong...');
+                    });;
                     return
                 } else {
                     return
@@ -124,6 +113,18 @@
             newMessageBar.querySelector('.serial').innerHTML = '#' + serial;
             newMessageBar.querySelector('.time').innerHTML = time;
             return newMessageBar
+        },
+        loadMessageBar: function() {
+            model.fetch().then(function(MessageDbs) {
+                for (let i = 0; i < 10; i++) {
+                    var name = MessageDbs[i].attributes.nameText;
+                    var message = MessageDbs[i].attributes.messageText;
+                    var serial = MessageDbs[i].attributes.number;
+                    var time = MessageDbs[i].attributes.timeText
+                    var newBar = controller.NewMessageBar(name, message, serial, time);
+                    messagesShow.append(newBar);
+                };
+            });
         }
     };
     controller.init();
