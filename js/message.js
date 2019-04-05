@@ -24,7 +24,7 @@
             query.limit(10);
             query.descending('createdAt');
             return query.find()
-        }
+        },
 
     };
     var controller = {
@@ -125,7 +125,7 @@
                     messagesShow.append(newBar);
                 };
             });
-        }
+        },
     };
     controller.init();
 }.call();
