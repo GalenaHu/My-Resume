@@ -65,7 +65,7 @@
                         inputBlur.call(nameTag);
                         inputBlur.call(messageTag);
                     }, function() {
-                        alert('Oh, something got wrong...');
+                        alert('LeanCloud华北节点域名无法解析，网站正在解决中...');
                     });;
                     return
                 } else {

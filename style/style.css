@@ -25,6 +25,7 @@ a {
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
+    display: block;
 }
 
 .clearfix::after {
@@ -242,7 +243,7 @@ nav {
     color: #3d4451;
 }
 
-dd>svg {
+dd>.icon {
     display: none;
 }
 
@@ -278,7 +279,7 @@ dd>svg {
     background: #d05c60;
 }
 
-.contact>ul>li>a>svg {
+.contact>ul>li>a>.icon {
     display: block;
 }
 
@@ -383,6 +384,7 @@ section>h2 {
 
 .projects-container {
     overflow: hidden;
+    position: relative;
 
     width: 960px;
     margin: 0 auto;
@@ -390,47 +392,62 @@ section>h2 {
     box-shadow: 0 0 4px 4px rgba(0, 0, 0, .2);
 }
 
-.projects-wrapper {
-    display: flex;
-
-    flex-wrap: nowrap;
-}
-
 .project {
     font-size: 0;
-
-    position: relative;
     /* 图片下有1像素空隙 */
+    vertical-align: middle;
 }
 
-.project>.mask {
-    position: absolute;
-
-    height: 540px;
-
-    background-color: rgba(0, 0, 0, .3);
+.swiper-arrow {
+    visibility: hidden;
 }
 
-.project>.project-message {
+.projects-container:hover .swiper-arrow {
+    visibility: visible;
+}
+
+.swiper-mask {
+    visibility: hidden;
     position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
     z-index: 1;
-    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.projects-container:hover .swiper-mask {
+    visibility: visible;
+}
+
+.project-info {
+    position: absolute;
     left: 0;
-
-    margin: 30px;
-
-    border: 1px solid red;
-}
-
-.project>.project-message>.project-name {
-    font-size: 2rem;
-
+    bottom: 0;
+    margin-left: 40px;
+    margin-bottom: 20px;
     color: white;
+    font-size: 2rem;
 }
+
+.project-buttons {
+    display: flex;
+}
+
+.project-buttons>div {
+    font-size: 3rem;
+    margin-right: 15px;
+}
+
+.project-buttons .icon {
+    display: inline-block;
+}
+
 
 .messages {
     width: 960px;
     margin: 0 auto;
+    margin-bottom: 80px;
 }
 
 .messages-container {
@@ -439,7 +456,6 @@ section>h2 {
 
     background-color: white;
     box-shadow: 0 0 4px 4px rgba(0, 0, 0, .2);
-    ;
 }
 
 .form {
