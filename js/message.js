@@ -66,11 +66,9 @@
                         inputBlur.call(messageTag);
                     }, function() {
                         alert('LeanCloud华北节点域名无法解析，网站正在解决中...');
-                    });;
+                    });
                     return
-                } else {
-                    return
-                };
+                }
             });
             messageTag.addEventListener('keydown', function(e) {
                 if (e.keyCode == 13) {
@@ -108,10 +106,10 @@
         NewMessageBar: function(name, message, serial, time) {
             var newMessageBar = document.getElementsByClassName('message-bar')[0].cloneNode(true);
             newMessageBar.classList.remove('message-bar-hidden');
-            newMessageBar.querySelector('.message-name').innerHTML = name + '：';
-            newMessageBar.querySelector('.message-text').innerHTML = message;
-            newMessageBar.querySelector('.serial').innerHTML = '#' + serial;
-            newMessageBar.querySelector('.time').innerHTML = time;
+            newMessageBar.querySelector('.message-name').textContent = name + '：';
+            newMessageBar.querySelector('.message-text').textContent = message;
+            newMessageBar.querySelector('.serial').textContent = '#' + serial;
+            newMessageBar.querySelector('.time').textContent = time;
             return newMessageBar
         },
         loadMessageBar: function() {
@@ -126,6 +124,16 @@
                 };
             });
         },
+        escapeHTML: function(str) {
+            str = str.replace(/&/g, '&amp;')
+            str = str.replace(/</g, '&lt;')
+            str = str.replace(/>/g, '&gt;')
+            str = str.replace(/"/g, '&quto;')
+            str = str.replace(/'/g, '&#39;')
+            str = str.replace(/`/g, '&#96;')
+            str = str.replace(/\//g, '&#x2F;')
+            return str
+        }
     };
     controller.init();
 }.call();
