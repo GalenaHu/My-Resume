@@ -2,8 +2,8 @@
     var view = document.getElementById('messages');
     var model = {
         init: function() {
-            var APP_ID = 'NySsgYTEF9Y2bhdX1CSvUJKI-gzGzoHsz';
-            var APP_KEY = 's8ILTe6dBOIAe725MrMygKAl';
+            var APP_ID = 'u5b4Us5Ldd5tmSyRLb1rHLVj-MdYXbMMI';
+            var APP_KEY = 'CNAsGAbUEoCyhaCgfyjoDEsM';
             AV.init({
                 appId: APP_ID,
                 appKey: APP_KEY
@@ -55,7 +55,7 @@
                     let NameValue = nameTag.value;
                     let MessageValue = messageTag.value;
                     let myDate = new Date();
-                    let TimeValue = myDate.toLocaleDateString() + '<br>' + myDate.getHours() + ':' + myDate.getMinutes();
+                    let TimeValue = myDate.toLocaleDateString() + ' ' + myDate.getHours() + ':' + myDate.getMinutes();
                     model.save(NameValue, MessageValue, TimeValue).then(function(object) {
                         console.log('success');
                         var newBar = controller.NewMessageBar(NameValue, MessageValue, 'new', TimeValue);
